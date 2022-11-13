@@ -83,6 +83,51 @@ void Phonebook::add_contact(int counter)
     std::cout << i << std::endl;
 }
 
+bool Phonebook::check_prompt(std::string str)
+{
+    int i;
+
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] < 47 || str[i] > 58)
+            return false;
+        i++;
+    }
+    return true;
+}
+
+void Phonebook::search_contact()
+{
+    std::string prompt;
+    int index;
+    int i;
+
+    i = 0;
+    std::cout << "enter an index baliz: ";
+    getline(std::cin, prompt);
+    if (check_prompt(prompt))
+    {
+        std::stringstream(prompt) >> index;
+        if (index < 0 || index > 3)
+            std::cout << "out of range" << std::endl;
+        else
+        {
+            while (i < 2)
+            {
+                if (index == i)
+                {
+                    person[i].output_infos();
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+    else
+        std::cout << "enter digits baliz" << std::endl;
+}
+
 void Phonebook::print()
 {
     int i;
@@ -90,7 +135,7 @@ void Phonebook::print()
     i = 0;
     while (i < 2)
     {
-        person[i].print_infos();
+        person[i].print_infos(i);
         i++;
     }
 }

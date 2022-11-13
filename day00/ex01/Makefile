@@ -23,6 +23,3 @@ fclean: clean
 	rm -rf $(NAME_M)
 
 re : fclean all.
-
-
-# contact.hpp phonebook.hpp

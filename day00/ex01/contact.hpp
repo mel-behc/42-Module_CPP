@@ -10,7 +10,9 @@ class Contact
     public:
         Contact();
         void assigne_info(std::string info[]);
-        void print_infos() const;
+        void search_out(std::string str) const;
+        void print_infos(int index) const;
+        void output_infos() const;
 };
 
 #endif
