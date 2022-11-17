@@ -16,7 +16,7 @@ void Contact::assigne_info(std::string info[])
     }
 }
 
-void Contact::search_out(std::string str) const
+void Contact::search_output(std::string str) const
 {
     int i;
 
@@ -48,7 +48,7 @@ void Contact::print_infos(int index) const
             break;
         if (i == 0)
             std::cout << index;
-        search_out(m_infos[i]);
+        search_output(m_infos[i]);
         if (i == 2)
             std::cout << std::endl;
         i++;

@@ -59,7 +59,7 @@ void Phonebook::add_contact(int counter)
 
     if (counter == 0)
         i = 0;
-    if (i < 2) // befor the array getting full
+    if (i < 8) // befor the array getting full
     {
         fill_contact(infos);
         if (infos[0].size() != 0) // verify if the array contains infos
@@ -109,11 +109,11 @@ void Phonebook::search_contact()
     if (check_prompt(prompt))
     {
         std::stringstream(prompt) >> index;
-        if (index < 0 || index > 3)
+        if (index < 0 || index > 8)
             std::cout << "out of range" << std::endl;
         else
         {
-            while (i < 2)
+            while (i < 8)
             {
                 if (index == i)
                 {
@@ -133,7 +133,7 @@ void Phonebook::print()
     int i;
 
     i = 0;
-    while (i < 2)
+    while (i < 8)
     {
         person[i].print_infos(i);
         i++;

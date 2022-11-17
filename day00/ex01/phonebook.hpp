@@ -6,7 +6,7 @@
 class Phonebook
 {
 	private:
-		Contact person[2];
+		Contact person[8];
 		void	user_output(int index) const;
 		void 	clear_array(std::string array[]);
 		void	fill_contact(std::string info[]);
