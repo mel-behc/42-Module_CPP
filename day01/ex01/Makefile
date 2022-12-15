@@ -1,17 +1,17 @@
 CC = g++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME_M = exec
-HEADER = header.hpp 
+NAME = exec
+HEADER = Zombie.hpp 
 SRC = ./main.cpp \
-		./contact.cpp \
-		./phonebook.cpp
+		Zombie.cpp \
+		zombieHorde.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME_M)
+all: $(NAME)
 
-$(NAME_M): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME_M)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
@@ -20,6 +20,6 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME_M)
+	rm -rf $(NAME)
 
 re : fclean all
