@@ -1,9 +1,5 @@
 #include "header.hpp"
 
-Contact::Contact()
-{
-}
-
 void Contact::assigne_info(std::string info[])
 {
     int i;
@@ -48,6 +44,20 @@ void Contact::print_infos(int index) const
     }
 }
 
+void Contact::output_indications(int index) const
+{
+    if (index == 0)
+        std::cout << "First name        : ";
+    else if (index == 1)
+        std::cout << "Last name         : ";
+    else if (index == 2)
+        std::cout << "Nickname          : ";
+    else if (index == 3)
+        std::cout << "Phone number      : ";
+    else if (index == 4)
+        std::cout << "Darkest secret    : ";
+}
+
 void Contact::output_infos() const
 {
     int i;
@@ -57,6 +67,7 @@ void Contact::output_infos() const
     {
         if (m_infos[i].empty())
             break;
+        output_indications(i);
         std::cout << m_infos[i] << '\n';
         i++;
     }

@@ -1,9 +1,5 @@
 #include "header.hpp"
 
-Phonebook::Phonebook()
-{
-}
-
 void Phonebook::user_output(int index) const
 {
     if (index == 0)
@@ -108,7 +104,6 @@ void Phonebook::add_contact(int counter)
         if (infos[0].size() != 0)
             person[j].assigne_info(infos);
     }
-    // std::cout << i << std::endl;
 }
 
 bool Phonebook::check_prompt(std::string str)

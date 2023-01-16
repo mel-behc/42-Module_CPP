@@ -2,21 +2,21 @@
 
 int main()
 {
-	Phonebook test;
+	Phonebook book;
 	std::string prompt;
 	int	counter;
 
-	counter = 0; // to know if it was the first time i enter to the program
+	counter = 0; // to know if it is the first time the program enter
 	while (1)
 	{
 		std::cout << "enter a command : ";
 		getline(std::cin, prompt);
 		if (prompt == "ADD" || prompt == "add")
-			test.add_contact(counter);
+			book.add_contact(counter);
 		else if (prompt == "SEARCH" || prompt == "search")
 		{
-			test.print();
-			test.search_contact();
+			book.print();
+			book.search_contact();
 		}
 		else if (prompt == "EXIT" || prompt == "exit")
 			exit(0);

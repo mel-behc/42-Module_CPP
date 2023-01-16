@@ -1,4 +1,4 @@
-#include <iostream>
+#include "megaphone.hpp"
 
 std::string	capitalise_str(std::string str)
 {

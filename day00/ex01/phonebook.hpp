@@ -14,7 +14,6 @@ class Phonebook
 		int		checkPhoneNumber(std::string number);
 		bool	check_prompt(std::string str);
 	public:
-		Phonebook();
 		void	add_contact(int counter);
 		void 	search_contact();
 		void	print();
