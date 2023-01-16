@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME_M = exec
+NAME_M = log
 HEADER = Account.hpp 
 SRC = 	./Account.cpp \
 			./tests.cpp 

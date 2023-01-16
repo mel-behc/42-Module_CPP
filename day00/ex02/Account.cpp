@@ -109,7 +109,7 @@ void Account::displayStatus( void ) const
 void	Account::_displayTimestamp( void )
 {
     time_t  now;
-    tm  *date;
+    tm      *date;
 
     now = time(0);
     date = localtime(&now);

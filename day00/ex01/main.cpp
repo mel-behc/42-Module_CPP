@@ -19,10 +19,7 @@ int main()
 			test.search_contact();
 		}
 		else if (prompt == "EXIT" || prompt == "exit")
-		{
-			std::cout << "thella a batal" << std::endl;
 			exit(0);
-		}
 		counter++;
 	}
 	return (0);

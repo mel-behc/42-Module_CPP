@@ -10,6 +10,8 @@ class Phonebook
 		void	user_output(int index) const;
 		void 	clear_array(std::string array[]);
 		void	fill_contact(std::string info[]);
+		int		isDigit(int c);
+		int		checkPhoneNumber(std::string number);
 		bool	check_prompt(std::string str);
 	public:
 		Phonebook();

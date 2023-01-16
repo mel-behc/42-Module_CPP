@@ -7,15 +7,15 @@ Phonebook::Phonebook()
 void Phonebook::user_output(int index) const
 {
     if (index == 0)
-        std::cout << "First name => ";
+        std::cout << "First name        => ";
     else if (index == 1)
-        std::cout << "Last name => ";
+        std::cout << "Last name         => ";
     else if (index == 2)
-        std::cout << "Nickname => ";
+        std::cout << "Nickname          => ";
     else if (index == 3)
-        std::cout << "Phone number => ";
+        std::cout << "Phone number      => ";
     else if (index == 4)
-        std::cout << "Darkest secret => ";
+        std::cout << "Darkest secret    => ";
 }
 
 void Phonebook::clear_array(std::string array[])
@@ -30,6 +30,27 @@ void Phonebook::clear_array(std::string array[])
     }
 }
 
+int	Phonebook::isDigit(int c)
+{
+	return (c >= 48 && c <= 57);
+}
+
+int Phonebook::checkPhoneNumber(std::string number)
+{
+    int len;
+    int i;
+
+    len = number.length();
+    i = 0;
+    while (i < len)
+    {
+        if (!isdigit(number[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 void Phonebook::fill_contact(std::string infos[])
 {
     std::string prompt;
@@ -41,7 +62,14 @@ void Phonebook::fill_contact(std::string infos[])
         user_output(i);
         getline(std::cin, prompt);
         if (!prompt.empty())
+        {
             infos[i] = prompt;
+            if (i == 3 && !checkPhoneNumber(infos[i]))
+            {
+                clear_array(infos);
+                break;   
+            }
+        }
         else
         {
             clear_array(infos);
@@ -80,7 +108,7 @@ void Phonebook::add_contact(int counter)
         if (infos[0].size() != 0)
             person[j].assigne_info(infos);
     }
-    std::cout << i << std::endl;
+    // std::cout << i << std::endl;
 }
 
 bool Phonebook::check_prompt(std::string str)
@@ -104,18 +132,18 @@ void Phonebook::search_contact()
     int i;
 
     i = 0;
-    std::cout << "enter an index baliz: ";
+    std::cout << "enter an index of the contact: ";
     getline(std::cin, prompt);
     if (check_prompt(prompt))
     {
         std::stringstream(prompt) >> index;
-        if (index < 0 || index > 8)
-            std::cout << "out of range" << std::endl;
+        if (index < 1 || index > 9)
+            std::cout << "out of range" << '\n';
         else
         {
             while (i < 8)
             {
-                if (index == i)
+                if (index - 1 == i)
                 {
                     person[i].output_infos();
                     break;
@@ -125,7 +153,7 @@ void Phonebook::search_contact()
         }
     }
     else
-        std::cout << "enter digits baliz" << std::endl;
+        std::cout << "only digits " << '\n';
 }
 
 void Phonebook::print()

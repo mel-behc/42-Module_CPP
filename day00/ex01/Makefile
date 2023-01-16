@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME_M = exec
+NAME_M = phonebook
 HEADER = header.hpp 
 SRC = ./main.cpp \
 		./contact.cpp \
