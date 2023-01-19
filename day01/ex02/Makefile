@@ -1,23 +1,23 @@
 CC = g++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = exec
-# HEADER = Zombie.hpp 
+NAME_M = exec
 SRC = ./main.cpp 
+	
 
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME)
+all: $(NAME_M)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+$(NAME_M): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME_M)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME_M)
 
 re : fclean all

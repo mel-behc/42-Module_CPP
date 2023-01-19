@@ -1,21 +1,17 @@
-#include "HumanB.hpp"
+#include "header.hpp"
 
 HumanB::HumanB(std::string name)
 {
     player = name;
-    weapon = new Weapon();
+    weapon = NULL;
 }
 
-HumanB::~HumanB()
+void HumanB::setWeapon(Weapon& newWepeon)
 {
+    weapon = &newWepeon;
 }
 
-void HumanB::setWeapon(Weapon& weaponTyp)
+void HumanB::attack(void)
 {
-    weapon = &weaponTyp;
-}
-
-void HumanB::attack()
-{
-    std::cout << player << " attacks with their " << weapon->getType() << std::endl;
+    std::cout << player << " attacks with their " << weapon->getType() <<  '\n';
 }

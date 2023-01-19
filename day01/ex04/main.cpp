@@ -18,21 +18,29 @@ std::string replaceStr(std::string line, std::string s1, std::string s2)
     std::string replace1;
     int pos;
     int len;
+    int i;
 
-    pos = line.find(s1);
-    if (pos > 0)
+    i = 0;
+    while (i < (int)line.size())
     {
-        replace1 = line.substr(0, pos) + s2;
-        pos += s1.size();
-        len = ftStrlen(line, pos);
-        line = replace1 + line.substr(pos, len);
-    }
-    else if (pos == 0)
-    {
-        pos = s1.size();
-        len = ftStrlen(line, pos);
-        replace1 = line.substr(pos, len);
-        line = s2 + replace1;
+        pos = line.find(s1);
+        if (pos > 0)
+        {
+            replace1 = line.substr(0, pos) + s2;
+            pos += s1.size();
+            len = ftStrlen(line, pos);
+            line = replace1 + line.substr(pos, len);
+            i = pos;
+        }
+        else if (pos == 0)
+        {
+            pos = s1.size();
+            len = ftStrlen(line, pos);
+            replace1 = line.substr(pos, len);
+            line = s2 + replace1;
+            i = pos;
+        }
+        i++;
     }
     return (line);
 }
@@ -46,7 +54,7 @@ int main(int ac, char **av)
         return(0);
     filename = av[1];
     std::ifstream inStream(filename);
-    std::ofstream ouStream("file.replace");
+    std::ofstream ouStream("new_file.replace");
     if (inStream)
     {
         while (std::getline(inStream, line))

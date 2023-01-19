@@ -2,13 +2,12 @@
 
 void Harl::complain(std::string level)
 {
-    void (Harl::*fnct[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    void (Harl::*fnctPtr[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string cmpl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	for(int i = 0; i < 4; i++)
 	{
-		if (level == cmpl[i]){
-			(this->*fnct[i])();		
-		}
+		if (level == cmpl[i])
+			(this->*fnctPtr[i])();
 	}
 }
 

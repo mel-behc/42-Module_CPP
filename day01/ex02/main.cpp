@@ -1,19 +1,20 @@
 #include <iostream>
 #include <string>
 
-int main()
+
+int main(void)
 {
     std::string str;
-    std::string *stringPTR;
-    std::string& stringREF = str;
+    std::string *stringPtr;
+    std::string& stringRef = str;
 
-    stringPTR = &str;
     str = "HI THIS IS BRAIN";
-    std::cout << &str << std::endl;
-    std::cout << stringPTR << std::endl;
-    std::cout << &stringREF << std::endl;
-    std::cout << str << std::endl;
-    std::cout << *stringPTR << std::endl;
-    std::cout << stringREF << std::endl;
-
+    stringPtr = &str;
+    std::cout << &str << '\n';
+    std::cout << stringPtr << '\n';
+    std::cout << &stringRef << '\n';
+    std::cout << str << '\n';
+    std::cout << *stringPtr << '\n';
+    std::cout << stringRef << '\n';
+    return (0);
 }

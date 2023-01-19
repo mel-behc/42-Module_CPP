@@ -1,20 +1,18 @@
 #include "Zombie.hpp"
 
-// Zombie::Zombie()
-// {
-// }
+Zombie::Zombie() {}
 
-Zombie::Zombie(std::string Name)
+Zombie::Zombie(std::string name)
 {
-    _name = Name;
+    m_name = name;
 }
 
 Zombie::~Zombie()
 {
-    std::cout << "The <<" << _name << ">> Zombie killed" << std::endl;
+    std::cout << m_name << " is killed" << '\n';
 }
 
-void Zombie::announce()
+void Zombie::announce(void)
 {
-    std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    std::cout << m_name << ": BraiiiiiiinnnzzzZ..." << '\n';
 }

@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 			obj.complain("ERROR");
 			break;
 		default:
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			std::cout << "[ Probably complaining about insignificant problems ]" << '\n';
             break;
     }
 }
