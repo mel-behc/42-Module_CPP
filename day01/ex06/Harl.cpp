@@ -8,7 +8,7 @@ void Harl::complain(std::string level)
 	for(int i = 0; i < 4; i++)
 	{
 		if (level == cmpl[i])
-			(this->*fnct[i])();		
+			(this->*fnct[i])();
 	}
 }
 

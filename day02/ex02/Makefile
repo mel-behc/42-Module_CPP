@@ -1,18 +1,16 @@
-CC = c++
+CC = g++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME_M = zombie
-HEADER = Zombie.hpp
+NAME = exec
+HEADER = Fixed.hpp 
 SRC = ./main.cpp \
-		Zombie.cpp \
-		NewZombie.cpp \
-		randomChump.cpp 
+		Fixed.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-all: $(NAME_M)
+all: $(NAME)
 
-$(NAME_M): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME_M)
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
@@ -21,6 +19,6 @@ clean:
 	rm -rf $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME_M)
+	rm -rf $(NAME)
 
 re : fclean all
