@@ -51,7 +51,8 @@ int Fixed::toInt(void) const
 
 Fixed& Fixed::operator=(const Fixed& obj)
 {
-    this->fixedPoint = obj.getRawBits();
+    if (this != &obj)
+        this->fixedPoint = obj.getRawBits();
     return (*this);
 }
 

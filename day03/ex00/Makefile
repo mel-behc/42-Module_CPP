@@ -1,16 +1,16 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
 NAME = exec
-HEADER = Fixed.hpp 
+HEADER = ClapTrap.hpp
 SRC = ./main.cpp \
-		Fixed.cpp
+		ClapTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER)
