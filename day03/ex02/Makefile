@@ -4,7 +4,8 @@ NAME = exec
 HEADER = header.hpp
 SRC = ./main.cpp \
 		ClapTrap.cpp \
-		ScavTrap.cpp
+		ScavTrap.cpp \
+		FragTrap.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

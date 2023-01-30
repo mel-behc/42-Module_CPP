@@ -1,8 +1,17 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap()
 {
 	std::cout << "Default constructor called \n";
+	m_name = "";
+	m_hitPoint = 10;
+	m_energyPoint = 10;
+	m_attackDamage = 0;
+}
+
+ClapTrap::ClapTrap(std::string name)
+{
+	std::cout << "name initializer constructor called \n";
 	m_name = name;
 	m_hitPoint = 10;
 	m_energyPoint = 10;
@@ -72,4 +81,9 @@ void ClapTrap::clapStatus(void)
 	std::cout << "hit point " << m_hitPoint << '\n';
 	std::cout << "energy point " << m_energyPoint << '\n';
 	std::cout << "attack damage " << m_attackDamage << '\n';
+}
+
+void ClapTrap::setName(std::string name)
+{
+	m_name = name;
 }
