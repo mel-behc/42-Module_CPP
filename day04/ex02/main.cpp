@@ -30,7 +30,8 @@ int main(void)
     for (int i(0); i < 6; i++)
         delete animals[i];
 
-    // std::cout << animalo.getType() << '\n';
+    std::cout << animalo.getType() << '\n';
+    std::cout << Animal.
 
     delete cat;//should not create a leak
     delete dog;

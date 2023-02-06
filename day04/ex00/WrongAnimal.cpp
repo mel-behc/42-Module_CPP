@@ -2,6 +2,7 @@
 
 WrongAnimal::WrongAnimal()
 {
+    m_type = "kind of animal";
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& obj)

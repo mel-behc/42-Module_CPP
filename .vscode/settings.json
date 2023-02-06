@@ -52,7 +52,14 @@
         "variant": "cpp",
         "vector": "cpp",
         "iomanip": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "__functional_base": "cpp",
+        "algorithm": "cpp",
+        "bit": "cpp",
+        "cmath": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "utility": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

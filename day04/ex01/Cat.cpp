@@ -9,7 +9,7 @@ Cat::Cat() : m_type("cat")
 Cat::Cat(const Cat& obj)
 {
     std::cout << "[Cat] copy constructor called. \n";
-    m_brain = NULL;
+    this->m_brain = NULL;
     *this = obj;
 }
 

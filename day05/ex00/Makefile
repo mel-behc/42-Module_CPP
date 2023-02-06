@@ -3,12 +3,8 @@ CFLAGS = -std=c++98 -Wall -Werror -Wextra
 NAME = exec
 HEADER = header.hpp
 SRC = ./main.cpp \
-		Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		Brain.cpp
+		Bureaucrat.cpp \
+		MyException.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

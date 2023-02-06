@@ -23,6 +23,7 @@ int main(void)
     {
         Dog obj1(obj);
     }
+    
     std::cout << "************* "<< obj.getIdea(0) << " *************" << '\n';
     std::cout << "************* "<< obj.getIdea(1) << " *************" << '\n';
     

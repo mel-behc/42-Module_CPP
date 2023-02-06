@@ -9,7 +9,7 @@ Dog::Dog() : m_type("dog")
 Dog::Dog(const Dog& obj)
 {
     std::cout << "[Dog] copy constructor called. \n";
-    m_brain = NULL;
+    this->m_brain = NULL;
     *this = obj;
 }
 
@@ -21,7 +21,7 @@ Dog& Dog::operator=(const Dog& obj)
         this->m_type = obj.m_type;
         if (this->m_brain != NULL)
             delete this->m_brain;
-        this->m_brain = new Brain(*obj.m_brain);
+        this->m_brain = new Brain(*(obj.m_brain));
     }
     return (*this);
 }
