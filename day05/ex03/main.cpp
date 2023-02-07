@@ -4,11 +4,18 @@ int main()
 {    
     try 
     {
-        Bureaucrat hamid("hamid", 16);
-        AForm *form = new PresidentialPardonForm("chtiwa");
-        form->beSigned(hamid);
-        hamid.executeForm(*form);
-        delete form;
+        Bureaucrat Staff("Stuff", 5);
+        Intern someRandomIntern;
+
+        AForm* rrf;
+        rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
+        if (rrf)
+        {
+            rrf->beSigned(Staff);
+            Staff.signForm(*rrf);
+            rrf->execute(Staff);
+        }
+        delete rrf;
     }
     catch (std::exception &e)
     {
