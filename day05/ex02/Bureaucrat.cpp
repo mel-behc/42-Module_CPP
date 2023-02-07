@@ -57,10 +57,16 @@ int Bureaucrat::getGrade(void) const
 	return (m_grade);
 }
 
-void Bureaucrat::signForm(const Form& form) const
+void Bureaucrat::signForm(const AForm& form) const
 {
 	if (form.getSignature() == 1)
 		std::cout << this->getName() << " signed " << form.getName() << '\n';
+}
+
+void Bureaucrat::executeForm(AForm const & obj) const
+{
+    obj.execute(*this);
+    std::cout << getName() << " executed " << obj.getName() << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& obj)
