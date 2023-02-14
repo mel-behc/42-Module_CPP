@@ -2,26 +2,29 @@
 
 int main()
 {
-    unsigned int size = 23;
-    Array<int> numbers(size);
+    unsigned int size(10);
+    Array<int> intNum(size);
     
     for(unsigned int i = 0; i < size; i++)
-        numbers[i] = i;
+        intNum[i] = ((i + 1) * 10);
 
-    try {
+    try 
+    {
         for (unsigned int i = 0; i < size; i++)
-            std::cout << numbers[i] << ", ";
-        std::cout << "\n";
+            std::cout << '[' << intNum[i] << ']' << " ";
+        std::cout << '\n';
     }   
-    catch(std::exception &e){
-        std::cout << e.what() << std::endl;
-    } 
+    catch(std::exception &e)
+    {
+        std::cout << e.what() << '\n';
+    }
+
     try
     {
-        std::cout << numbers[50] << "\n";
+        std::cout << intNum[50] << '\n';
     }
     catch(std::exception &e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << e.what() << '\n';
     }
 }
