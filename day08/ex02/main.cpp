@@ -4,52 +4,61 @@ int main()
 {
     {   
         // MutantStack
-        MutantStack<int> mstack;
-        mstack.push(5);
-        mstack.push(17);
-        std::cout << mstack.top() << std::endl;
-        mstack.pop();
-        std::cout << mstack.size() << std::endl;
-        mstack.push(3);
-        mstack.push(5);
-        mstack.push(737);
+        MutantStack<int> mutantStack;
+        mutantStack.push(5);
+        mutantStack.push(17);
+
+        std::cout << mutantStack.top() << std::endl;
+        
+        mutantStack.pop(); // remove teh first element on the top of the stack
+        
+        std::cout << mutantStack.size() << std::endl;
+        
+        mutantStack.push(3);
+        mutantStack.push(5);
+        mutantStack.push(737); 
         //[...]
-        mstack.push(0);
-        MutantStack<int>::iterator it = mstack.begin();
-        MutantStack<int>::iterator ite = mstack.end();
+        mutantStack.push(0);
+        
+        MutantStack<int>::iterator it = mutantStack.begin();
+        MutantStack<int>::iterator itt = mutantStack.end();
+        
         ++it;
         --it;
-        while (it != ite)
+        
+        while (it != itt)
         {
-        std::cout << *it << std::endl;
-        ++it;
+            std::cout << *it << std::endl;
+            ++it;
         }
-        std::stack<int> s(mstack);
+        // std::stack<int> s(mutantStack);
     }
-    std::cout << "-----------\n";
-    {
-        // list
-        std::list<int> mstack;
-        mstack.push_back(5);
-        mstack.push_back(17);
-        std::cout << mstack.back() << std::endl;
-        mstack.pop_back();
-        std::cout << mstack.size() << std::endl;
-        mstack.push_back(3);
-        mstack.push_back(5);
-        mstack.push_back(737);
-        //[...]
-        mstack.push_back(0);
-        std::list<int>::iterator it = mstack.begin();
-        std::list<int>::iterator ite = mstack.end();
-        ++it;
-        --it;
-        while (it != ite)
-        {
-        std::cout << *it << std::endl;
-        ++it;
-        }
-        std::list<int> s(mstack);
-    }
+
+    // std::cout << "######################################\n";
+    
+    // {
+    //     // list
+    //     std::list<int> mutantStack;
+    //     mutantStack.push_back(5);
+    //     mutantStack.push_back(17);
+    //     std::cout << mutantStack.back() << std::endl;
+    //     mutantStack.pop_back();
+    //     std::cout << mutantStack.size() << std::endl;
+    //     mutantStack.push_back(3);
+    //     mutantStack.push_back(5);
+    //     mutantStack.push_back(737);
+    //     //[...]
+    //     mutantStack.push_back(0);
+    //     std::list<int>::iterator it = mutantStack.begin();
+    //     std::list<int>::iterator ite = mutantStack.end();
+    //     ++it;
+    //     --it;
+    //     while (it != ite)
+    //     {
+    //     std::cout << *it << std::endl;
+    //     ++it;
+    //     }
+    //     std::list<int> s(mutantStack);
+    // }
     return (0);
 }

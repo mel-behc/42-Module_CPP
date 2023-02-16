@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stack>
 #include <list>
-// , class Cont = std::deque<T> 
+#include <vector>
 
 template <typename T>
 
@@ -12,17 +12,22 @@ class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack() : MutantStack<T>::stack() {}
-		MutantStack(MutantStack const &other): MutantStack<T>::stack(other){}
-		MutantStack<T> &operator=(MutantStack<T> const &obj)
+		
+        MutantStack(MutantStack const &other): MutantStack<T>::stack(other){}
+		
+        MutantStack<T> &operator=(MutantStack<T> const &obj)
 		{
             (void)obj;
 			return *this;
 		}
-		virtual ~MutantStack() {};
+		
+        virtual ~MutantStack() {};
+
 		typedef typename MutantStack<T>::stack::container_type::iterator iterator;
 		typedef typename MutantStack<T>::stack::container_type::reverse_iterator riterator;
 		typedef typename MutantStack<T>::container_type::const_iterator conterator;
 		typedef typename MutantStack<T>::container_type::const_reverse_iterator reconterator;
+
 		iterator begin()
         {
             return (this->c.begin()); 
