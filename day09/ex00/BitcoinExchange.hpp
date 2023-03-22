@@ -7,6 +7,7 @@
 #include <sstream>
 #include <cctype>
 #include <cstdlib>
+#include <ctime>
 #include <map>
 
 #define MAX_YEAR 2022
@@ -17,19 +18,17 @@
 #define MIN_DAY 1
 
 
+typedef struct s_values
+{
+    std::string date;
+    float dvalue;
+}t_values;
+
 void    fillMap(std::map< std::string, std::string >& data, std::string& line);
-void    checkLineFormat(std::string& line);
+bool    checkLineFormat(std::string& line);
+float   decimalBtcValue(std::string& line);
+void    applieOperation(std::map< std::string, std::string >& data, std::string& line);
+void    printResult(std::string& date, float btcValue, float result);
 
-// class BitcoinExchange
-// {
-//     private:
-
-//     public:
-//     BitcoinExchange();
-//     BitcoinExchange(const BitcoinExchange& obj);
-//     BitcoinExchange& operator=(const BitcoinExchange& obj);
-//     ~BitcoinExchange();
-
-// };
 
 #endif

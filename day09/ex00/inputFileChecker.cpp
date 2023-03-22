@@ -23,24 +23,33 @@ static bool checkChars(std::string& line)
     return (false);
 }
 
+static bool pipDelimter(std::string& line)
+{
+    for (size_t i = 0; i < line.size(); ++i)
+    {
+        if (line[i] == '|')
+        {
+            if (line[i - 1] == ' ' && line[i + 1] == ' ' && i == 11)
+                break;
+            else
+                return (false);
+        }
+        if (i == (line.size() - 1))
+            return (false);
+    }
+    return (true);
+}
+
 static bool checkDateFormat(std::string& line)
 {
-    size_t pos;
-
-    if (line[4] != '-')
+    if (line[4] != '-' || isdigit(line[3]) == 0 || isdigit(line[5]) == 0)
         return (false);
-    pos = 4;
-    while (line[++pos])
-    {
-        if (line[pos] == '-')
-            break ;
-    }
-    if (pos == line.size())
+    if (line[7] != '-' || isdigit(line[6]) == 0 || isdigit(line[8]) == 0)
         return (false);
     return (true);
 }
 
-static bool checkYear(std::string& line)
+int checkYear(std::string& line)
 {
     std::string year;
     int value;
@@ -49,115 +58,109 @@ static bool checkYear(std::string& line)
     std::stringstream yr(year);
     yr >> value;
     if (value >= MIN_YEAR && value <= MAX_YEAR)
-        return (true);
-    return (false);
+        return (value);
+    return (0);
 }
 
-static bool checkMonth(std::string& line)
+int checkMonth(std::string& line)
 {
     std::string month;
     int value;
 
-    if (line[5] == '0' || line[5] == '1')
-        month = line.substr(5, 2);
-    else
-        month = line.substr(5, 1);
+    month = line.substr(5, 2);
     std::stringstream mn(month);
     mn >> value;
     if (value >= MIN_MONTH && value <= MAX_MONTH)
-        return (true);
-    return (false);
+        return (value);
+    return (0);
 }
 
-static bool checkDay(std::string& line)
+int checkDay(std::string& line)
 {
     std::string day;
     int value;
-    size_t pos;
 
-    pos = 0;
-    while (line[pos])
-    {
-        if (line[pos] == '|')
-            break;
-        pos++;
-    }
-    if (pos == line.size())
-        return (false);
-    while (line[pos] != '-')
-        pos--;
-    pos++;
-    if (line[pos] == '0' || line[pos] == '1')
-        day = line.substr(pos, 2);
-    else
-        day = line.substr(pos, 1);
+    day = line.substr(8, 2);
     std::stringstream dy(day);
     dy >> value;
     if (value >= MIN_DAY && value <= MAX_DAY)
+        return (value);
+    return (0);
+}
+
+static bool commaChecker(std::string& line)
+{
+    int counter;
+    size_t i;
+
+    counter = 0;
+    i = -1;
+    if (line[0] == '-')
+        i = 0;
+    while (line[++i])
+    {
+        if (line[i] == '.' || !isdigit(line[i]))
+            counter++;
+    }
+    if (counter == 0 || counter == 1)
         return (true);
     return (false);
 }
 
-static void checkValue(std::string& line)
+static bool checkValue(std::string& line)
 {
-    std::string btc;
-    size_t i;
-    int rValue = 0;
-    float dValue = 0;
-    int pos;
+    std::string btcValue;
 
-    pos = 0;
-    while (line[pos] != '|')
-        pos++;
-    pos++;
-    btc = line.substr(pos, (line.size()));
-    std::stringstream vl(btc);
-    for (i = 0; i < btc.size(); ++i)
-    {
-        if (btc[i] == '.' )
-            break;
-    }
-    if (i != btc.size())
-    {
-        vl >> dValue;
-        std::cout << dValue << '\n';
-        if (dValue > 1000)
-            std::cout << "Error: too large a number. \n";
-        else if (dValue < 0)
-            std::cout << "Error: not a positive number. \n";
-    }
-    else
-    {
-        vl >> rValue;
-        std::cout << rValue << '\n';
-        if (rValue > 1000)
-            std::cout << "Error: too large a number. \n";
-        else if (rValue < 0)
-            std::cout << "Error: not a positive number. \n";
-    }
+    btcValue = &line[13];
+    if (commaChecker(btcValue))
+        return (true);
+    return (false);
 }
 
-void checkLineFormat(std::string& line)
+
+float decimalBtcValue(std::string& line)
 {
-    if (!checkChars(line))
+    std::string btc;
+    float dValue = 0;
+    size_t i;
+
+    i = 12;
+    while (line[++i])
     {
-        std::cout << "Error: bad input !\n";
-        return ;
-    }    
-    for (size_t i = 0; i < line.size(); ++i)
-    {
-        if (line[i] == '|')
-            break;
-        if (i == (line.size()))
+        if (line[i] == '.')
         {
-            std::cout << "Error: bad input !\n";
-            return ;
+            if (isdigit(line[i + 1]) == 0)
+            {
+                std::cout << "Error: bad input !\n";
+                return (0);
+            }
+            else
+                break;
         }
     }
-    if (!checkYear(line) || !checkDateFormat(line) || !checkMonth(line) || !checkDay(line))
+    btc = line.substr(13, (line.size() - 13));
+    std::stringstream value(btc);
+    value >> dValue;
+    if (dValue > 1000)
+        std::cout << "Error: too large a number. \n";
+    else if (dValue < 0)
+        std::cout << "Error: not a positive number. \n";
+    else
+        return (dValue);
+    return (0);
+}
+
+bool checkLineFormat(std::string& line)
+{
+    if (!checkChars(line) || !pipDelimter(line) || !checkDateFormat(line) || !checkValue(line))
     {
-        std::cout << "Error: bad input !\n";
-        return ;
+        std::cout << "Error: bad input => " << line << '\n';
+        return (false);
     }
-    checkValue(line);
+    if (!checkYear(line) || !checkMonth(line) || !checkDay(line))
+    {
+        std::cout << "Error: bad input => " << line << '\n';
+        return (false);
+    }
+    return (true);
 }
