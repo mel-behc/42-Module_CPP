@@ -1,10 +1,10 @@
 CC = c++
 CFLAGS = -std=c++98 -Wall -Werror -Wextra
-NAME = btc
-HEADER = BitcoinExchange.hpp
+NAME = RPN
+HEADER = RPN.hpp
 SRC = ./main.cpp \
-	./BitcoinExchange.cpp \
-	./inputFileChecker.cpp \
+	./RPN.cpp \
+	./inputChecker.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

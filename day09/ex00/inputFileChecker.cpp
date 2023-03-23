@@ -1,11 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-// check the format of line : ok
-// 1- checke the year : 2009 <= year <= 2022 : ok
-// 2- checke the month : 01 <= month <= 12 : ok
-// 3- checke the day : 01 <= day <= 31 : ok
-
-
 static bool checkChars(std::string& line)
 {
     size_t length;

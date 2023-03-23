@@ -27,7 +27,10 @@ void applieOperation(std::map< std::string, std::string >& data, std::string& li
         return ;
     it = data.find(values.date);
     if (it == data.end())
-        it = data.upper_bound(values.date);
+    {
+        it = data.lower_bound(values.date);
+        it--;
+    }
     std::stringstream convertValue(it->second);
     convertValue >> dNumber;
     values.dvalue = tmp * dNumber;
